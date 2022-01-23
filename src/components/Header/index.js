@@ -18,7 +18,7 @@ const Header = () => (
       return (
         <NavMobileContainer>
           <HeaderLogoImg src={websiteLogo} alt="website logo" />
-          <div>asdgafs</div>
+          <div>Abhiram</div>
         </NavMobileContainer>
       )
     }}
