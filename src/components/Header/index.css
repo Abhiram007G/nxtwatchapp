@@ -1,0 +1,23 @@
+.popup-content {
+  width: 100%;
+  height: 100vh;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.dark-container {
+  background-color: green;
+  color: green;
+  border: 10px solid;
+}
+
+.light-container {
+  background-color: #f9f9f9;
+}

@@ -20,7 +20,9 @@ class App extends Component {
     isDarkTheme: false,
   }
 
-  changeTheme = () => {}
+  changeTheme = () => {
+    this.setState(prev => ({isDarkTheme: !prev.isDarkTheme}))
+  }
 
   render() {
     const {isDarkTheme} = this.state
