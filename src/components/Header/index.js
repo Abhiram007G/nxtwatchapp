@@ -74,7 +74,11 @@ class Header extends Component {
                   }}
                 </ActiveMenuContext.Consumer>
                 <NavMobileIcons>
-                  <IconButton type="button" onClick={() => changeTheme()}>
+                  <IconButton
+                    type="button"
+                    data-testid="theme"
+                    onClick={() => changeTheme()}
+                  >
                     {isDarkTheme ? (
                       <FiSun color="white" size={22} />
                     ) : (
@@ -125,7 +129,7 @@ class Header extends Component {
                             type="button"
                             onClick={onClickLogout}
                           >
-                            Logout
+                            Confirm
                           </Button>
                         </div>
                       </LogoutPopupContent>
@@ -184,7 +188,7 @@ class Header extends Component {
                             type="button"
                             onClick={onClickLogout}
                           >
-                            Logout
+                            Confirm
                           </Button>
                         </div>
                       </LogoutPopupContent>

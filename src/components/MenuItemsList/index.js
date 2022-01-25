@@ -32,76 +32,83 @@ const MenuItemsList = () => {
 
           return (
             <MenuList>
-              <Link to="/" className="link">
-                <MenuLink
-                  theme={theme}
-                  isActive={activeMenu === activeMenuConstants.home}
-                  onClick={() => changeActiveMenu(activeMenuConstants.home)}
-                >
-                  <AiFillHome
-                    size={25}
-                    color={
-                      activeMenu === activeMenuConstants.home
-                        ? iconActive
-                        : iconColor
-                    }
-                  />
-                  <MenuHeading theme={theme}>Home</MenuHeading>
-                </MenuLink>
-              </Link>
-              <Link to="/trending" className="link">
-                <MenuLink
-                  theme={theme}
-                  isActive={activeMenu === activeMenuConstants.trending}
-                  onClick={() => changeActiveMenu(activeMenuConstants.trending)}
-                >
-                  <AiFillFire
-                    size={25}
-                    color={
-                      activeMenu === activeMenuConstants.trending
-                        ? iconActive
-                        : iconColor
-                    }
-                  />
-                  <MenuHeading theme={theme}>Trending</MenuHeading>
-                </MenuLink>
-              </Link>
-              <Link to="/gaming" className="link">
-                <MenuLink
-                  theme={theme}
-                  isActive={activeMenu === activeMenuConstants.gaming}
-                  onClick={() => changeActiveMenu(activeMenuConstants.gaming)}
-                >
-                  <IoLogoGameControllerB
-                    size={25}
-                    color={
-                      activeMenu === activeMenuConstants.gaming
-                        ? iconActive
-                        : iconColor
-                    }
-                  />
-                  <MenuHeading theme={theme}>Gaming</MenuHeading>
-                </MenuLink>
-              </Link>
-              <Link to="/saved-videos" className="link">
-                <MenuLink
-                  theme={theme}
-                  isActive={activeMenu === activeMenuConstants.savedVideos}
-                  onClick={() =>
-                    changeActiveMenu(activeMenuConstants.savedVideos)
+              <MenuLink
+                theme={theme}
+                isActive={activeMenu === activeMenuConstants.home}
+                onClick={() => changeActiveMenu(activeMenuConstants.home)}
+                key="HOME"
+              >
+                <AiFillHome
+                  size={25}
+                  color={
+                    activeMenu === activeMenuConstants.home
+                      ? iconActive
+                      : iconColor
                   }
-                >
-                  <RiMenuAddLine
-                    size={25}
-                    color={
-                      activeMenu === activeMenuConstants.savedVideos
-                        ? iconActive
-                        : iconColor
-                    }
-                  />
+                />
+                <Link to="/" className="link">
+                  <MenuHeading theme={theme}>Home</MenuHeading>
+                </Link>
+              </MenuLink>
+
+              <MenuLink
+                theme={theme}
+                isActive={activeMenu === activeMenuConstants.trending}
+                onClick={() => changeActiveMenu(activeMenuConstants.trending)}
+                key="TRENDING"
+              >
+                <AiFillFire
+                  size={25}
+                  color={
+                    activeMenu === activeMenuConstants.trending
+                      ? iconActive
+                      : iconColor
+                  }
+                />
+                <Link to="/trending" className="link">
+                  <MenuHeading theme={theme}>Trending</MenuHeading>
+                </Link>
+              </MenuLink>
+
+              <MenuLink
+                theme={theme}
+                isActive={activeMenu === activeMenuConstants.gaming}
+                onClick={() => changeActiveMenu(activeMenuConstants.gaming)}
+                key="GAMING"
+              >
+                <IoLogoGameControllerB
+                  size={25}
+                  color={
+                    activeMenu === activeMenuConstants.gaming
+                      ? iconActive
+                      : iconColor
+                  }
+                />
+                <Link to="/gaming" className="link">
+                  <MenuHeading theme={theme}>Gaming</MenuHeading>
+                </Link>
+              </MenuLink>
+
+              <MenuLink
+                theme={theme}
+                isActive={activeMenu === activeMenuConstants.savedVideos}
+                onClick={() =>
+                  changeActiveMenu(activeMenuConstants.savedVideos)
+                }
+                key="SAVED_VIDEOS"
+              >
+                <RiMenuAddLine
+                  size={25}
+                  color={
+                    activeMenu === activeMenuConstants.savedVideos
+                      ? iconActive
+                      : iconColor
+                  }
+                />
+                <Link to="/saved-videos" className="link">
                   <MenuHeading theme={theme}>Saved videos</MenuHeading>
-                </MenuLink>
-              </Link>
+                </Link>
+              </MenuLink>
             </MenuList>
           )
         }}

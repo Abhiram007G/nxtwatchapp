@@ -3,7 +3,12 @@ import {Component} from 'react'
 import MenuItemsList from '../MenuItemsList'
 
 import ThemeContext from '../../context/ThemeContext'
-import {SidebarContainer} from './styledComponent'
+import {
+  SidebarContainer,
+  LogoIcons,
+  ContactUsContainer,
+  Text,
+} from './styledComponent'
 
 class Sidebar extends Component {
   render() {
@@ -15,9 +20,26 @@ class Sidebar extends Component {
           return (
             <SidebarContainer theme={theme}>
               <MenuItemsList />
-              <div>
-                <h1>hi</h1>
-              </div>
+              <ContactUsContainer>
+                <Text theme={theme}>CONTACT US</Text>
+                <div>
+                  <LogoIcons
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                    alt="twitter logo"
+                  />
+                  <LogoIcons
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                    alt="facebook logo"
+                  />
+                  <LogoIcons
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                    alt="linked in logo"
+                  />
+                </div>
+                <Text theme={theme}>
+                  Enjoy! Now see your channels and recommendations!
+                </Text>
+              </ContactUsContainer>
             </SidebarContainer>
           )
         }}

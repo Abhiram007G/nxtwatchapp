@@ -12,6 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 
 import ActiveMenuContext from './context/ActiveMenuContext'
 import ThemeContext from './context/ThemeContext'
+import SavedVideosContext from './context/SavedVideosContext'
 
 import './App.css'
 
@@ -28,6 +29,38 @@ class App extends Component {
   state = {
     isDarkTheme: false,
     activeMenu: activeMenuConstants.home,
+    savedVideosList: [],
+    save: false,
+  }
+
+  addVideosToSavedVideos = videoDetails => {
+    this.setState(prev => ({
+      savedVideosList: [...prev.savedVideosList, videoDetails],
+    }))
+  }
+
+  deleteVideosFromSavedVideos = videoDetails => {
+    const {savedVideosList} = this.state
+    const updatedList = savedVideosList.filter(
+      each => each.id !== videoDetails.id,
+    )
+    this.setState({savedVideosList: updatedList})
+  }
+
+  updateSaveVideosList = videoDetails => {
+    const {save} = this.state
+    if (save) {
+      this.deleteVideosFromSavedVideos(videoDetails)
+    } else {
+      this.addVideosToSavedVideos(videoDetails)
+    }
+  }
+
+  updateSave = videoDetails => {
+    this.setState(
+      prev => ({save: !prev.save}),
+      this.updateSaveVideosList(videoDetails),
+    )
   }
 
   changeTheme = () => {
@@ -39,35 +72,45 @@ class App extends Component {
   }
 
   render() {
-    const {isDarkTheme, activeMenu} = this.state
+    const {isDarkTheme, activeMenu, save, savedVideosList} = this.state
 
     return (
-      <ActiveMenuContext.Provider
-        value={{activeMenu, changeActiveMenu: this.changeActiveMenu}}
+      <SavedVideosContext.Provider
+        value={{
+          save,
+          savedVideosList,
+          addVideosToSavedVideos: this.addVideosToSavedVideos,
+          deleteVideosFromSavedVideos: this.deleteVideosFromSavedVideos,
+          updateSave: this.updateSave,
+        }}
       >
-        <ThemeContext.Provider
-          value={{isDarkTheme, changeTheme: this.changeTheme}}
+        <ActiveMenuContext.Provider
+          value={{activeMenu, changeActiveMenu: this.changeActiveMenu}}
         >
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <ProtectedRoute exact path="/" component={Home} />
-            <ProtectedRoute exact path="/trending" component={Trending} />
-            <ProtectedRoute exact path="/gaming" component={Gaming} />
-            <ProtectedRoute
-              exact
-              path="/saved-videos"
-              component={SavedVideos}
-            />
-            <ProtectedRoute
-              exact
-              path="/videos/:id"
-              component={VideoItemDetails}
-            />
-            <ProtectedRoute exact path="/not-found" component={NotFound} />
-            <Redirect to="/not-found" />
-          </Switch>
-        </ThemeContext.Provider>
-      </ActiveMenuContext.Provider>
+          <ThemeContext.Provider
+            value={{isDarkTheme, changeTheme: this.changeTheme}}
+          >
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <ProtectedRoute exact path="/" component={Home} />
+              <ProtectedRoute exact path="/trending" component={Trending} />
+              <ProtectedRoute exact path="/gaming" component={Gaming} />
+              <ProtectedRoute
+                exact
+                path="/saved-videos"
+                component={SavedVideos}
+              />
+              <ProtectedRoute
+                exact
+                path="/videos/:id"
+                component={VideoItemDetails}
+              />
+              <ProtectedRoute exact path="/not-found" component={NotFound} />
+              <Redirect to="/not-found" />
+            </Switch>
+          </ThemeContext.Provider>
+        </ActiveMenuContext.Provider>
+      </SavedVideosContext.Provider>
     )
   }
 }

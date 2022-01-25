@@ -62,7 +62,7 @@ export const SearchInput = styled.input`
   height: 30px;
   flex-grow: 1;
   border: 1px solid ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
-
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
   padding-left: 10px;
   background-color: transparent;
   outline: none;
@@ -91,3 +91,43 @@ export const VideosList = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
 `
+
+export const LoaderContainer = styled.div`
+  text-align: center;
+`
+
+export const FailureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+`
+
+export const FailureImg = styled.img`
+  width: 80%;
+  padding-top: 15px;
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+`
+
+export const FailureText = styled.h1`
+  margin: 0px;
+  padding: 5px;
+  color: ${props => (props.theme === 'dark' ? '#f9f9f9' : '#181818')};
+`
+export const RetryButton = styled.button`
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 5px;
+`
+
+export const NoVideosContainer = styled(FailureContainer)``
+
+export const NoVideosImg = styled(FailureImg)``

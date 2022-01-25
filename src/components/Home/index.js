@@ -4,7 +4,7 @@ import {IoMdClose} from '@react-icons/all-files/io/IoMdClose'
 import {BsSearch} from '@react-icons/all-files/bs/BsSearch'
 
 import Cookies from 'js-cookie'
-
+import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 import VideoCard from '../VideoCard'
@@ -23,6 +23,13 @@ import {
   SearchContainer,
   SearchButton,
   VideosList,
+  LoaderContainer,
+  FailureImg,
+  FailureContainer,
+  FailureText,
+  RetryButton,
+  NoVideosImg,
+  NoVideosContainer,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -87,7 +94,7 @@ class Home extends Component {
   }
 
   adPopup = () => (
-    <GetPremium>
+    <GetPremium data-testid="banner">
       <CloseButton
         type="button"
         data-testid="close"
@@ -108,7 +115,29 @@ class Home extends Component {
     this.setState({searchInput: event.target.value})
   }
 
-  noVideosView = () => <h1>No Videos View</h1>
+  noVideosView = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const theme = isDarkTheme ? 'dark' : 'light'
+        return (
+          <NoVideosContainer>
+            <NoVideosImg
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+              alt="no videos"
+            />
+            <FailureText theme={theme}>No search results found</FailureText>
+            <FailureText theme={theme} as="p">
+              Try different keywords or remove search filter
+            </FailureText>
+            <RetryButton type="button" onClick={this.getVideos}>
+              Retry
+            </RetryButton>
+          </NoVideosContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
 
   successView = () => {
     const {videosList} = this.state
@@ -126,9 +155,50 @@ class Home extends Component {
     )
   }
 
-  failureView = () => <h1>Failure View</h1>
+  failureView = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const theme = isDarkTheme ? 'dark' : 'light'
+        const imgUrl = isDarkTheme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
 
-  Loader = () => <h1>Loader</h1>
+        return (
+          <FailureContainer>
+            <FailureImg src={imgUrl} alt="failure view" />
+
+            <FailureText theme={theme}>Oops! Something Went Wrong</FailureText>
+            <FailureText theme={theme} as="p">
+              We are having some trouble to complete your request. Please try
+              again
+            </FailureText>
+            <RetryButton type="button" onClick={this.getVideos}>
+              Retry
+            </RetryButton>
+          </FailureContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
+
+  loader = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        return (
+          <LoaderContainer className="loader-container" data-testid="loader">
+            <Loader
+              type="ThreeDots"
+              color={isDarkTheme ? '#ffffff' : '#000000'}
+              height="50"
+              width="50"
+            />
+          </LoaderContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
 
   checkApiStatus = () => {
     const {apiStatus} = this.state
@@ -139,7 +209,7 @@ class Home extends Component {
       case apiStatusConstants.failure:
         return this.failureView()
       case apiStatusConstants.inProgress:
-        return this.Loader()
+        return this.loader()
 
       default:
         return null
@@ -175,6 +245,7 @@ class Home extends Component {
                       type="button"
                       theme={theme}
                       onClick={this.getVideos}
+                      data-testid="searchButton"
                     >
                       <BsSearch color={color} />
                     </SearchButton>
