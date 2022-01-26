@@ -19,6 +19,7 @@ import {
   FailureText,
   RetryButton,
   VideosList,
+  TrendingMainContainer,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -156,13 +157,13 @@ class Trending extends Component {
           const theme = isDarkTheme ? 'dark' : 'light'
 
           return (
-            <>
+            <TrendingMainContainer data-testid="trending" theme={theme}>
               <Header />
               <MainBody>
                 <SidebarContainer>
                   <Sidebar />
                 </SidebarContainer>
-                <TrendingContainer data-testid="trending" theme={theme}>
+                <TrendingContainer>
                   <TrendingMenuContainer theme={theme}>
                     <IconContainer theme={theme}>
                       <AiFillFire size={40} color="#ff0b37" />
@@ -172,7 +173,7 @@ class Trending extends Component {
                   {this.checkApiStatus()}
                 </TrendingContainer>
               </MainBody>
-            </>
+            </TrendingMainContainer>
           )
         }}
       </ThemeContext.Consumer>

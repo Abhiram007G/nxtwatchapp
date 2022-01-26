@@ -75,20 +75,20 @@ class App extends Component {
     const {isDarkTheme, activeMenu, save, savedVideosList} = this.state
 
     return (
-      <SavedVideosContext.Provider
-        value={{
-          save,
-          savedVideosList,
-          addVideosToSavedVideos: this.addVideosToSavedVideos,
-          deleteVideosFromSavedVideos: this.deleteVideosFromSavedVideos,
-          updateSave: this.updateSave,
-        }}
+      <ThemeContext.Provider
+        value={{isDarkTheme, changeTheme: this.changeTheme}}
       >
-        <ActiveMenuContext.Provider
-          value={{activeMenu, changeActiveMenu: this.changeActiveMenu}}
+        <SavedVideosContext.Provider
+          value={{
+            save,
+            savedVideosList,
+            addVideosToSavedVideos: this.addVideosToSavedVideos,
+            deleteVideosFromSavedVideos: this.deleteVideosFromSavedVideos,
+            updateSave: this.updateSave,
+          }}
         >
-          <ThemeContext.Provider
-            value={{isDarkTheme, changeTheme: this.changeTheme}}
+          <ActiveMenuContext.Provider
+            value={{activeMenu, changeActiveMenu: this.changeActiveMenu}}
           >
             <Switch>
               <Route exact path="/login" component={Login} />
@@ -108,9 +108,9 @@ class App extends Component {
               <ProtectedRoute exact path="/not-found" component={NotFound} />
               <Redirect to="/not-found" />
             </Switch>
-          </ThemeContext.Provider>
-        </ActiveMenuContext.Provider>
-      </SavedVideosContext.Provider>
+          </ActiveMenuContext.Provider>
+        </SavedVideosContext.Provider>
+      </ThemeContext.Provider>
     )
   }
 }

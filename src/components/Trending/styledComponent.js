@@ -13,11 +13,16 @@ export const SidebarContainer = styled.div`
     display: block;
   }
 `
+
+export const TrendingMainContainer = styled.div`
+  background-color: ${props =>
+    props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'};
+`
+
 export const TrendingContainer = styled.div`
   height: 90vh;
   overflow-x: auto;
-  background-color: ${props =>
-    props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'};
+
   flex-grow: 1;
   padding: 15px;
 `

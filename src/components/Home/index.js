@@ -30,6 +30,7 @@ import {
   RetryButton,
   NoVideosImg,
   NoVideosContainer,
+  HomeMainContainer,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -225,13 +226,13 @@ class Home extends Component {
           const theme = isDarkTheme ? 'dark' : 'light'
           const color = isDarkTheme ? '#f9f9f9' : '#181818'
           return (
-            <>
+            <HomeMainContainer data-testid="home" theme={theme}>
               <Header />
               <MainBody>
                 <SidebarContainer>
                   <Sidebar />
                 </SidebarContainer>
-                <HomeContainer data-testid="home" theme={theme}>
+                <HomeContainer>
                   {isPopup && this.adPopup()}
                   <SearchContainer>
                     <SearchInput
@@ -253,7 +254,7 @@ class Home extends Component {
                   {this.checkApiStatus()}
                 </HomeContainer>
               </MainBody>
-            </>
+            </HomeMainContainer>
           )
         }}
       </ThemeContext.Consumer>

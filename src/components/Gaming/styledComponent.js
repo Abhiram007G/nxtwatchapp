@@ -14,11 +14,15 @@ export const SidebarContainer = styled.div`
   }
 `
 
+export const GamingMainContainer = styled.div`
+  background-color: ${props =>
+    props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'};
+`
+
 export const GamingContainer = styled.div`
   height: 90vh;
   overflow-x: auto;
-  background-color: ${props =>
-    props.theme === 'dark' ? '#0f0f0f' : '#f9f9f9'};
+
   flex-grow: 1;
   padding: 15px;
   @media screen and (max-width: 768px) {

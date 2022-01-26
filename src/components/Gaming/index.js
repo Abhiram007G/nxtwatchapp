@@ -19,6 +19,7 @@ import {
   FailureText,
   RetryButton,
   VideosList,
+  GamingMainContainer,
 } from './styledComponent'
 
 import GamingVideoCard from '../GamingVideoCard'
@@ -154,13 +155,13 @@ class Gaming extends Component {
           const {isDarkTheme} = value
           const theme = isDarkTheme ? 'dark' : 'light'
           return (
-            <>
+            <GamingMainContainer data-testid="gaming" theme={theme}>
               <Header />
               <MainBody>
                 <SidebarContainer>
                   <Sidebar />
                 </SidebarContainer>
-                <GamingContainer data-testid="gaming" theme={theme}>
+                <GamingContainer>
                   <GamingMenuContainer theme={theme}>
                     <IconContainer theme={theme}>
                       <IoLogoGameControllerB size={40} color="#ff0b37" />
@@ -170,7 +171,7 @@ class Gaming extends Component {
                   {this.checkApiStatus()}
                 </GamingContainer>
               </MainBody>
-            </>
+            </GamingMainContainer>
           )
         }}
       </ThemeContext.Consumer>

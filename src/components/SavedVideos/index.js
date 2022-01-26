@@ -6,6 +6,7 @@ import Sidebar from '../Sidebar'
 import {
   MainBody,
   SidebarContainer,
+  SavedVideosMainContainer,
   SavedVideosContainer,
   SavedMenuContainer,
   IconContainer,
@@ -64,13 +65,13 @@ const SavedVideos = () => {
 
         const theme = isDarkTheme ? 'dark' : 'light'
         return (
-          <div>
+          <SavedVideosMainContainer data-testid="savedVideos" theme={theme}>
             <Header />
             <MainBody>
               <SidebarContainer>
                 <Sidebar />
               </SidebarContainer>
-              <SavedVideosContainer data-testid="savedVideos" theme={theme}>
+              <SavedVideosContainer>
                 <SavedMenuContainer theme={theme}>
                   <IconContainer theme={theme}>
                     <RiMenuAddLine size={40} color="#ff0b37" />
@@ -80,7 +81,7 @@ const SavedVideos = () => {
                 {savedList(value)}
               </SavedVideosContainer>
             </MainBody>
-          </div>
+          </SavedVideosMainContainer>
         )
       }}
     </ThemeContext.Consumer>

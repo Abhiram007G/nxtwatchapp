@@ -14,11 +14,16 @@ export const SidebarContainer = styled.div`
     display: block;
   }
 `
+
+export const HomeMainContainer = styled.div`
+  background-color: ${props =>
+    props.theme === 'dark' ? '#181818' : '#f9f9f9'};
+`
+
 export const HomeContainer = styled.div`
   height: 100%;
   overflow-x: auto;
-  background-color: ${props =>
-    props.theme === 'dark' ? '#181818' : '#f9f9f9'};
+
   flex-grow: 1;
   padding: 15px;
   @media screen and (max-width: 768px) {
