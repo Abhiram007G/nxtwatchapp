@@ -1,8 +1,7 @@
 import {Component} from 'react'
 import {formatDistanceToNow} from 'date-fns'
-import {BiLike} from '@react-icons/all-files/bi/BiLike'
-import {BiDislike} from '@react-icons/all-files/bi/BiDislike'
-import {RiMenuAddLine} from '@react-icons/all-files/ri/RiMenuAddLine'
+import {BiLike, BiDislike} from 'react-icons/bi'
+import {RiMenuAddLine} from 'react-icons/ri'
 import Cookies from 'js-cookie'
 import ReactPlayer from 'react-player'
 import Loader from 'react-loader-spinner'
@@ -234,9 +233,9 @@ class VideoItemDetails extends Component {
             <FailureImg src={imgUrl} alt="failure view" />
 
             <FailureText theme={theme}>Oops! Something Went Wrong</FailureText>
-            <FailureText theme={theme} as="p">
+            <FailureText as="p" theme={theme}>
               We are having some trouble to complete your request. Please try
-              again
+              again.
             </FailureText>
             <RetryButton type="button" onClick={this.getVideoDetails}>
               Retry

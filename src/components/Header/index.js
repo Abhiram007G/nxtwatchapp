@@ -1,9 +1,8 @@
 import {Component} from 'react'
-import {FiSun} from '@react-icons/all-files/fi/FiSun'
-import {FaMoon} from '@react-icons/all-files/fa/FaMoon'
-import {GiHamburgerMenu} from '@react-icons/all-files/gi/GiHamburgerMenu'
-import {FiLogOut} from '@react-icons/all-files/fi/FiLogOut'
-import {IoMdClose} from '@react-icons/all-files/io/IoMdClose'
+import {FiSun, FiLogOut} from 'react-icons/fi'
+import {FaMoon} from 'react-icons/fa'
+import {GiHamburgerMenu} from 'react-icons/gi'
+import {IoMdClose} from 'react-icons/io'
 
 import {withRouter, Link} from 'react-router-dom'
 
@@ -118,10 +117,10 @@ class Header extends Component {
                   >
                     {close => (
                       <LogoutPopupContent theme={theme}>
-                        <p>Are your sure you want to logout?</p>
+                        <p>Are you sure, you want to logout</p>
                         <div>
                           <Button outline type="button" onClick={() => close()}>
-                            Close
+                            Cancel
                           </Button>
                           <Button
                             bgColor="blue"
@@ -177,10 +176,10 @@ class Header extends Component {
                   >
                     {close => (
                       <LogoutPopupContent theme={theme}>
-                        <p>Are your sure you want to logout?</p>
+                        <p>Are you sure, you want to logout</p>
                         <div>
                           <Button outline type="button" onClick={() => close()}>
-                            Close
+                            Cancel
                           </Button>
                           <Button
                             bgColor="blue"

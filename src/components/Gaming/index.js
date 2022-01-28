@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {IoLogoGameControllerB} from '@react-icons/all-files/io/IoLogoGameControllerB'
+import {IoLogoGameControllerB} from 'react-icons/io'
 
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'

@@ -37,7 +37,7 @@ class Sidebar extends Component {
                   />
                 </div>
                 <Text theme={theme}>
-                  Enjoy! Now see your channels and recommendations!
+                  Enjoy! Now to see your channels and recommendations!
                 </Text>
               </ContactUsContainer>
             </SidebarContainer>

@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {AiFillFire} from '@react-icons/all-files/ai/AiFillFire'
+import {AiFillFire} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import Header from '../Header'

@@ -1,4 +1,4 @@
-import {RiMenuAddLine} from '@react-icons/all-files/ri/RiMenuAddLine'
+import {RiMenuAddLine} from 'react-icons/ri'
 
 import Header from '../Header'
 import Sidebar from '../Sidebar'
@@ -39,7 +39,9 @@ const SavedVideos = () => {
                   alt="no saved videos"
                 />
 
-                <FailureText theme={theme}>No saved video found</FailureText>
+                <FailureText theme={theme} as="h1">
+                  No saved videos found
+                </FailureText>
                 <FailureText theme={theme} as="p">
                   You can save your videos while watching them
                 </FailureText>

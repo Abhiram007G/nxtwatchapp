@@ -1,7 +1,7 @@
 import {Component} from 'react'
 
-import {IoMdClose} from '@react-icons/all-files/io/IoMdClose'
-import {BsSearch} from '@react-icons/all-files/bs/BsSearch'
+import {IoMdClose} from 'react-icons/io'
+import {BsSearch} from 'react-icons/bs'
 
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
@@ -129,7 +129,7 @@ class Home extends Component {
             />
             <FailureText theme={theme}>No search results found</FailureText>
             <FailureText theme={theme} as="p">
-              Try different keywords or remove search filter
+              Try different key words or remove search filter
             </FailureText>
             <RetryButton type="button" onClick={this.getVideos}>
               Retry

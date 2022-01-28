@@ -70,7 +70,7 @@ export const LoginButton = styled.button`
   border-radius: 8px;
   border: none;
   background-color: #3b82f6;
-  color: white;
+  color: #ffffff;
   font-weight: 500;
   font-family: Roboto;
   font-size: 15px;

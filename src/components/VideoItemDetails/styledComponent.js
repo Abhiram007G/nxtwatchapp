@@ -81,7 +81,7 @@ export const VideoTextContainer = styled.div`
   }
 `
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   margin: 0px;
   margin-top: 8px;
   font-weight: 500;
